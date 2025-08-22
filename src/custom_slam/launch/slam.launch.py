@@ -1,10 +1,12 @@
-# ~/nd_ws/src/custom_slam/launch/slam.launch.py
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch_ros.actions import Node
+from launch_ros.actions import Node, LifecycleNode
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+
 
 def generate_launch_description():
     # Path to the custom SLAM parameters file
@@ -20,15 +22,27 @@ def generate_launch_description():
     )
 
     # slam_toolbox node
-    slam_toolbox_node = Node(
+    slam_toolbox_node = LifecycleNode(
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
         name='slam_toolbox',
         output='screen',
-        parameters=[slam_params_file, {'use_sim_time': 'false'}],
+        parameters=[slam_params_file ],
     )
+    
+    lifecycle_manager = Node(
+        package='nav2_lifecycle_manager',
+        executable='lifecycle_manager',
+        name='lifecycle_manager_slam',
+        output='screen',
+        parameters=[{'autostart': True},
+                    {‘node_names': ['slam_toolbox']}],
+    )
+
 
     return LaunchDescription([
         robot_bringup_launch,
-        slam_toolbox_node
+        slam_toolbox_node,
+        lifecycle_manager
     ])
+
