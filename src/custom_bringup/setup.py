@@ -25,6 +25,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'imu_corrector_node = custom_bringup.imu_corrector_node:main',
         ],
     },
 )
