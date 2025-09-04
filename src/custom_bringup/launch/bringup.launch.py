@@ -28,7 +28,7 @@ def generate_launch_description():
             os.path.join(description_pkg_path, 'launch', 'display.launch.py')
         ),
         # Disable the GUI components for this context
-        launch_arguments={'rviz2': 'false', 'joint_state_publisher_gui': 'false'}.items()
+       # launch_arguments={'rviz2': 'false', 'joint_state_publisher_gui': 'false'}.items()
     )
 
     # Include the LiDAR launch file

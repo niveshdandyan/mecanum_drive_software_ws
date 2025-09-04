@@ -14,7 +14,7 @@ def generate_launch_description():
       parameters=[
         {'device_model': 'MS200'},
         {'frame_id': 'laser_frame'},
-        {'scan_topic': 'MS200/scan'},
+        {'scan_topic': '/scan'},
         {'port_name': '/dev/ttyACM0'},
         {'baudrate': 230400},
         {'angle_min': 0.0},
@@ -27,18 +27,18 @@ def generate_launch_description():
   )
 
   # base_link to laser_frame tf node
-  base_link_to_laser_tf_node = Node(
-    package='tf2_ros',
-    executable='static_transform_publisher',
-    name='base_link_to_base_laser',
-    arguments=['0','0','0.18','0','0','0','base_link','laser_frame']
-  )
+  #base_link_to_laser_tf_node = Node(
+   # package='tf2_ros',
+    #executable='static_transform_publisher',
+    #name='base_link_to_base_laser',
+    #arguments=['0.12','0','-0.038','0','0','0','base_link','laser_frame']
+  #)
 
 
   # Define LaunchDescription variable
   ord = LaunchDescription()
 
   ord.add_action(ordlidar_node)
-  ord.add_action(base_link_to_laser_tf_node)
+  #ord.add_action(base_link_to_laser_tf_node)
 
   return ord

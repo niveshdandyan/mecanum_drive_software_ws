@@ -6,7 +6,7 @@
         prefix:=''
         parent:='base_link'
         frame_id:='imu'
-        xyz_offset:='0 0 0'
+        xyz_offset:='-0.065 0.027 0.01'
         rpy_offset:='0 0 0'
         inertial_xyz_offset:='0 0 0'
         inertial_rpy_offset:='0 0 0'

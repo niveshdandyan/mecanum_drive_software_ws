@@ -25,24 +25,27 @@ def generate_launch_description():
     slam_toolbox_node = LifecycleNode(
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
+        namespace='',
         name='slam_toolbox',
         output='screen',
-        parameters=[slam_params_file ],
+        parameters=[slam_params_file ]
     )
     
-    lifecycle_manager = Node(
-        package='nav2_lifecycle_manager',
-        executable='lifecycle_manager',
-        name='lifecycle_manager_slam',
-        output='screen',
-        parameters=[{'autostart': True},
-                    {‘node_names': ['slam_toolbox']}],
-    )
+    #lifecycle_manager = Node(
+     #@#   namespace='',
+       # package='nav2_lifecycle_manager',
+       # executable='lifecycle_manager',
+        #name='lifecycle_manager_slam',
+
+        #output='screen',
+        #parameters=[{'autostart': True},
+         #           {'node_names': ['slam_toolbox']}]
+    #)
 
 
     return LaunchDescription([
         robot_bringup_launch,
         slam_toolbox_node,
-        lifecycle_manager
+       # lifecycle_manager
     ])
 
