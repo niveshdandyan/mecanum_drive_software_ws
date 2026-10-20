@@ -1,4 +1,6 @@
-<video src="docs/mecanum_demo.mp4" controls muted playsinline width="100%"></video>
+![Mecanum drive demo](docs/mecanum_demo.gif)
+
+[Watch full video (mp4)](docs/mecanum_demo.mp4)
 
 # Mecanum Drive Software Workspace
 
