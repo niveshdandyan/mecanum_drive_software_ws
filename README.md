@@ -1,3 +1,5 @@
+<video src="docs/mecanum_demo.mp4" controls muted playsinline width="100%"></video>
+
 # Mecanum Drive Software Workspace
 
 ![Repo Owner Avatar](https://avatars.githubusercontent.com/u/155956228?v=4)
